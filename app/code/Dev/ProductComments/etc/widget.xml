@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:helloworld:Magento_Widget:etc/widget.xsd">
+    <widget class="Dev\ProductComments\Block\Widget\Comments" id="dev_productcomment">
+        <label>Comment permition</label>
+        <description>Comments</description>
+        <parameters>
+            <parameter name="posts" sort_order="10" visible="true" xsi:type="text">
+                <label>Widget title</label>
+            </parameter>
+            <parameter xsi:type='text' name="product_number_limiter" visible="true" sort_order="10">
+                <label translate="true">Set maximum number of products</label>
+            </parameter>
+        </parameters>
+    </widget>
+</widgets>
