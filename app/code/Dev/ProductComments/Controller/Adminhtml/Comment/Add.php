@@ -2,15 +2,16 @@
 
 namespace Dev\ProductComments\Controller\Adminhtml\Comment;
 
-use Magento\CatalogImportExport\Model\Import\Proxy\Product\ResourceModel;
-use Magento\Framework\App\Action\Context;
-use Dev\ProductComments\Model\Comment;
-use Magento\Framework\App\ResponseInterface;
-use Magento\Framework\Controller\Result\Redirect;
-use Magento\Framework\Controller\ResultInterface;
 use Magento\Framework\Registry;
+use Dev\ProductComments\Model\Comment;
 use Magento\Framework\View\Result\Page;
+use Magento\Framework\App\Action\Context;
+use Magento\Framework\App\ResponseInterface;
 use Magento\Framework\View\Result\PageFactory;
+use Dev\ProductComments\Model\CommentRepository;
+use Magento\Framework\Controller\ResultInterface;
+use Magento\Framework\Controller\Result\Redirect;
+use Magento\Framework\Exception\NoSuchEntityException;
 
 class Add extends \Dev\ProductComments\Controller\Adminhtml\Comment
 {
@@ -23,6 +24,10 @@ class Add extends \Dev\ProductComments\Controller\Adminhtml\Comment
      * @var Comment
      */
     private $commentModel;
+    /**
+     * @var CommentRepository
+     */
+    private $commentRepository;
 
     /**
      * Add constructor.
@@ -30,16 +35,19 @@ class Add extends \Dev\ProductComments\Controller\Adminhtml\Comment
      * @param PageFactory $resultPageFactory
      * @param Registry $coreRegistry
      * @param Comment $commentModel
+     * @param CommentRepository $commentRepository
      */
     public function __construct(
         Context $context,
         PageFactory $resultPageFactory,
         Registry $coreRegistry,
-        Comment $commentModel
+        Comment $commentModel,
+        CommentRepository $commentRepository
     ) {
         parent::__construct($context, $coreRegistry);
         $this->resultPageFactory = $resultPageFactory;
         $this->commentModel = $commentModel;
+        $this->commentRepository = $commentRepository;
     }
 
     /**
@@ -52,7 +60,10 @@ class Add extends \Dev\ProductComments\Controller\Adminhtml\Comment
         $model = $this->commentModel;
 
         if ($id) {
-            $model->load($id);
+            try {
+                $this->commentRepository->getById($id);
+            } catch (NoSuchEntityException $e) {
+            }
             if (!$model->getId()) {
                 $this->messageManager
                     ->addErrorMessage(__('This Comment no longer exists.'));

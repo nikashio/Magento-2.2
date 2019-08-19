@@ -2,11 +2,11 @@
 
 namespace Dev\ProductComments\Block;
 
-use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\Registry;
 use Magento\Framework\View\Element\Template;
 use Dev\ProductComments\Model\ResourceModel\Comment\CollectionFactory;
 use Magento\Catalog\Api\ProductRepositoryInterface;
+use Dev\ProductComments\Model\CommentRepository;
 
 class View extends Template
 {
@@ -16,17 +16,22 @@ class View extends Template
     private $registry;
     protected $commentFactory;
     private $productRepository;
+    /**
+     * @var CommentRepository
+     */
+    private $commentRepository;
 
     /**
      * View constructor.
+     * @param CommentRepository $commentRepository
      * @param Template\Context $context
      * @param Registry $registry
      * @param CollectionFactory $commentFactory
      * @param ProductRepositoryInterface $productRepository
      * @param array $data
      */
-
     public function __construct(
+        CommentRepository $commentRepository,
         Template\Context $context,
         Registry $registry,
         CollectionFactory $commentFactory,
@@ -37,28 +42,21 @@ class View extends Template
         $this->registry = $registry;
         $this->commentFactory = $commentFactory;
         $this->productRepository = $productRepository;
+        $this->commentRepository = $commentRepository;
     }
     public function getCurrentProduct()
     {
         return $this->registry->registry('current_product');
     }
 
-    public function getCommentCollection($productId): array
+    public function getCommentCollection($productId)
     {
-        $comment = $this->commentFactory->create();
-        $collection = $comment
-            ->addFieldToFilter('product_id', $productId)
-            ->addFieldToFilter('status', 'approved')
-            ->getItems();
-        return $collection;
+        return $this->commentRepository->getList($productId);
     }
 
     public function getProductName($productId)
     {
-        try {
-            return $this->productRepository->getById($productId)->getName();
-        } catch (NoSuchEntityException $e) {
-        }
+        return $this->productRepository->getById($productId)->getName();
     }
 }
 

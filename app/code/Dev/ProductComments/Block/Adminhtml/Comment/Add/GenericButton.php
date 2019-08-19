@@ -2,9 +2,9 @@
 
 namespace Dev\ProductComments\Block\Adminhtml\Comment\Add;
 
-use Magento\Backend\Block\Widget\Context;
 use Magento\Framework\Registry;
 use Magento\Framework\UrlInterface;
+use Magento\Backend\Block\Widget\Context;
 
 /**
  * Class GenericButton

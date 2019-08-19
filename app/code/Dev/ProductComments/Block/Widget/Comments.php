@@ -1,12 +1,12 @@
 <?php
 namespace Dev\ProductComments\Block\Widget;
 
-use Magento\Catalog\Api\ProductRepositoryInterface;
+use Magento\Catalog\Helper\Image;
 use Magento\Directory\Model\Currency;
-use Magento\Framework\Api\SearchCriteriaBuilder;
-use Magento\Framework\View\Element\Template;
 use Magento\Widget\Block\BlockInterface;
-use \Magento\Catalog\Helper\Image;
+use Magento\Framework\View\Element\Template;
+use Magento\Framework\Api\SearchCriteriaBuilder;
+use Magento\Catalog\Api\ProductRepositoryInterface;
 
 class Comments extends Template implements BlockInterface
 {

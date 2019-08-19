@@ -2,14 +2,14 @@
 
 namespace Dev\ProductComments\Controller\Adminhtml\Comment;
 
-use Dev\ProductComments\Model\Comment;
-use Dev\ProductComments\Model\ResourceModel\Comment as ResourceComment;
 use Exception;
+use Dev\ProductComments\Model\Comment;
 use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Action\Context;
+use Magento\Framework\View\Result\PageFactory;
 use Magento\Framework\Controller\ResultFactory;
 use Magento\Framework\Controller\ResultInterface;
-use Magento\Framework\View\Result\PageFactory;
+use Dev\ProductComments\Model\ResourceModel\Comment as ResourceComment;
 
 class NewAction extends Action
 {

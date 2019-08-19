@@ -22,18 +22,18 @@ if (count($comments) > 0): ?>
             <div class="block-content">
                 <ol class="items review-items">
                     <li class="item review-item" itemscope="" itemprop="review" itemtype="http://schema.org/Review">
-                        <div class="review-content" itemprop="description"><?= $item->getData("body") ?></div>
+                        <div class="review-content" itemprop="description"><?= $item->getData('body') ?></div>
                         <div class="review-details">
                             <p class="review-author"></p>
                             <p><b><?= $item->getData('comment')?></b></p>
                                 <span class="review-details-label">Commented by</span>
                                 <span class="review-details-value"
-                                        itemprop="author"><?= $item->getData("name") ?></span>
+                                        itemprop="author"><?= $item->getData('name') ?></span>
                             <br>
                             <p class="review-date">
                                 <span class="review-details-label">Posted on</span>
                                 <time class="review-details-value"
-                                      itemprop="datePublished"><?= date('m/j/Y', strtotime($item->getData("date"))) ?></time>
+                                      itemprop="datePublished"><?= date('m/j/Y', strtotime($item->getData('date'))) ?></time>
                             </p>
                         </div>
                     </li>
@@ -42,42 +42,8 @@ if (count($comments) > 0): ?>
         <?php endforeach; ?>
     </div>
 <?php endif;
-    if($commentsAvailable == 'yes') :
-?>
-
-
-    if (count($comments) > 0): ?>
-        <div class="block review-list">
-            <div class="block-title">
-                <strong>Product Comments</strong>
-            </div>
-            <?php foreach ($comments as $item): ?>
-                <div class="block-content">
-                    <ol class="items review-items">
-                        <li class="item review-item" itemscope="" itemprop="review" itemtype="http://schema.org/Review">
-                            <div class="review-content" itemprop="description"><?= $item->getData('body') ?></div>
-                            <div class="review-details">
-                                <p class="review-author"></p>
-                                <p><b><?= $item->getData('comment')?></b></p>
-                                <span class="review-details-label">Commented by</span>
-                                <span class="review-details-value"
-                                      itemprop="author"><?= $item->getData('name') ?></span>
-                                <br>
-                                <p class="review-date">
-                                    <span class="review-details-label">Posted on</span>
-                                    <time class="review-details-value"
-                                          itemprop="datePublished"><?= date('m/j/Y', strtotime($item->getData('date'))) ?></time>
-                                </p>
-                            </div>
-                        </li>
-                    </ol>
-                </div>
-            <?php endforeach; ?>
-        </div>
-    <?php endif;
     if($commentsAvailable === 'yes') :
-        ?>
-
+?>
     <form class="form" id="custom-form" action="<?=$block->getUrl('commentvisibility/index/sendComment')?>" data-mage-init='{"validation": {}}' method="post" autocomplete="off">
         <fieldset class="fieldset">
             <div class="field required">

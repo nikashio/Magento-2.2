@@ -1,11 +1,11 @@
 <?php
 namespace Dev\ProductComments\Controller\Index;
 
-use Magento\Framework\App\Action\Action;
-use Magento\Framework\Controller\ResultFactory;
-use Magento\Framework\App\Action\Context;
 use Magento\Framework\View\Result\Page;
+use Magento\Framework\App\Action\Action;
+use Magento\Framework\App\Action\Context;
 use Magento\Framework\View\Result\PageFactory;
+use Magento\Framework\Controller\ResultFactory;
 
 class Index extends Action
 {

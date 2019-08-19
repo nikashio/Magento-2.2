@@ -2,21 +2,30 @@
 
 namespace Dev\ProductComments\Controller\Adminhtml\Comment;
 
-use Dev\ProductComments\Model\Comment;
 use Exception;
+use Dev\ProductComments\Model\Comment;
 use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Action\Context;
 use Magento\Framework\Controller\ResultFactory;
+use Dev\ProductComments\Model\CommentRepository;
+use Magento\Framework\Exception\NoSuchEntityException;
 
 class Delete extends Action
 {
     private $commentModel;
+    /**
+     * @var CommentRepository
+     */
+    private $commentRepository;
+
     public function __construct(
         Context $context,
-        Comment $commentModel
+        Comment $commentModel,
+        CommentRepository $commentRepository
     ) {
         parent::__construct($context);
         $this->commentModel = $commentModel;
+        $this->commentRepository = $commentRepository;
     }
 
     public function execute()
@@ -25,12 +34,16 @@ class Delete extends Action
         $id = $params['id'];
         $resultRedirect = $this->resultFactory->create(ResultFactory::TYPE_REDIRECT);
 
-        if (!($contact = $this->commentModel->load($id))) {
-            $this->messageManager->addErrorMessage(__('Unable to proceed. Please, try again.'));
-            return $resultRedirect->setUrl($this->_redirect->getRefererUrl());
+        try {
+            if (!($contact = $this->commentRepository->getById($id))) {
+                $this->messageManager->addErrorMessage(__('Unable to proceed. Please, try again.'));
+                return $resultRedirect->setUrl($this->_redirect->getRefererUrl());
+            }
+        } catch (NoSuchEntityException $e) {
+            $e->getMessage();
         }
         try {
-            $contact->delete();
+            $this->delete();
             $this->messageManager->addSuccessMessage(__('Your contact has been deleted !'));
         } catch (Exception $e) {
             $this->messageManager->addErrorMessage(__('Error while trying to delete comment: '));

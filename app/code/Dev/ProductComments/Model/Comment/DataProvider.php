@@ -3,10 +3,10 @@
 namespace Dev\ProductComments\Model\Comment;
 
 use Dev\ProductComments\Model\Comment;
-use Dev\ProductComments\Model\ResourceModel\Comment\CollectionFactory;
 use Magento\Backend\Model\Auth\Session;
-use Magento\Framework\App\Request\DataPersistorInterface;
 use Magento\Ui\DataProvider\AbstractDataProvider;
+use Magento\Framework\App\Request\DataPersistorInterface;
+use Dev\ProductComments\Model\ResourceModel\Comment\CollectionFactory;
 
 class DataProvider extends AbstractDataProvider
 {

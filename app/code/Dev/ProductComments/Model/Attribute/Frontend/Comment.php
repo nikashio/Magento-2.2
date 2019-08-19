@@ -1,8 +1,8 @@
 <?php
 namespace Dev\ProductComments\Model\Attribute\Frontend;
 
-use Magento\Eav\Model\Entity\Attribute\Frontend\AbstractFrontend;
 use Magento\Framework\DataObject;
+use Magento\Eav\Model\Entity\Attribute\Frontend\AbstractFrontend;
 
 class Comment extends AbstractFrontend
 {

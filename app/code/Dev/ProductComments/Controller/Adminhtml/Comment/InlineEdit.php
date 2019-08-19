@@ -2,11 +2,11 @@
 
 namespace Dev\ProductComments\Controller\Adminhtml\Comment;
 
-use Dev\ProductComments\Model\Comment;
 use Exception;
-use Magento\Backend\App\Action;
-use Magento\Backend\App\Action\Context;
 use Magento\Cms\Model\Block;
+use Magento\Backend\App\Action;
+use Dev\ProductComments\Model\Comment;
+use Magento\Backend\App\Action\Context;
 use Magento\Framework\Controller\Result\Json;
 use Magento\Framework\Controller\Result\JsonFactory;
 

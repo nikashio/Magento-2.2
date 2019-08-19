@@ -1,12 +1,13 @@
-<?php
+<?php /** @noinspection ALL */
 
 namespace Dev\ProductComments\Controller\Adminhtml\Comment;
 
-use Dev\ProductComments\Model\Comment;
 use Exception;
-use Magento\Backend\Model\View\Result\Redirect;
+use Dev\ProductComments\Model\Comment;
 use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Action\Context;
+use Magento\Backend\Model\View\Result\Redirect;
+use Dev\ProductComments\Model\CommentRepository;
 use Magento\Framework\App\Request\DataPersistorInterface;
 
 class SaveComment extends Action
@@ -19,14 +20,28 @@ class SaveComment extends Action
      * @var DataPersistorInterface
      */
     protected $dataPersistor;
+    /**
+     * @var CommentRepository
+     */
+    private $commentRepository;
+
+    /**
+     * SaveComment constructor.
+     * @param Context $context
+     * @param DataPersistorInterface $dataPersistor
+     * @param Comment $commentModel
+     * @param CommentRepository $commentRepository
+     */
     public function __construct(
         Context $context,
         DataPersistorInterface $dataPersistor,
-        Comment $commentModel
+        Comment $commentModel,
+        CommentRepository $commentRepository
     ) {
         parent::__construct($context);
         $this->dataPersistor = $dataPersistor;
         $this->commentModel = $commentModel;
+        $this->commentRepository = $commentRepository;
     }
     public function execute()
     {
@@ -42,7 +57,7 @@ class SaveComment extends Action
             }
             $model->setData($data);
             try {
-                $model->save();
+                $this->commentRepository->save($model);
                 $this->messageManager->addSuccessMessage(__('You saved the comment.'));
                 $this->dataPersistor->clear('product_comments');
                 if ($this->getRequest()->getParam('back')) {

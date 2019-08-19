@@ -1,13 +1,13 @@
 <?php
 namespace Dev\ProductComment\Setup;
 
-use Dev\ProductComments\Model\Attribute\Frontend\Comment;
 use Magento\Catalog\Model\Product;
-use Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface;
 use Magento\Eav\Setup\EavSetupFactory;
 use Magento\Framework\Setup\InstallDataInterface;
 use Magento\Framework\Setup\ModuleContextInterface;
 use Magento\Framework\Setup\ModuleDataSetupInterface;
+use Dev\ProductComments\Model\Attribute\Frontend\Comment;
+use Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface;
 
 class InstallData implements InstallDataInterface
 {

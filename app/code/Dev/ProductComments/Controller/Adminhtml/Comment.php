@@ -2,15 +2,15 @@
 
 namespace Dev\ProductComments\Controller\Adminhtml;
 
-use Magento\Backend\Model\View\Result\Page;
+use Magento\Framework\Registry;
 use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Action\Context;
-use Magento\Framework\Registry;
+use Magento\Backend\Model\View\Result\Page;
 
 abstract class Comment extends Action
 {
 
-    const ADMIN_RESOURCE = 'Dev_ProductComments::top_level';
+    public const ADMIN_RESOURCE = 'Dev_ProductComments::top_level';
 
     protected $coreRegistry;
 

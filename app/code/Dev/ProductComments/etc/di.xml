@@ -12,6 +12,7 @@
             <argument name="resourceModel" xsi:type="string">Dev\ProductComments\Model\ResourceModel\Comment</argument>
         </arguments>
     </virtualType>
-
-
+        <preference for="Dev\ProductComments\Api\CommentRepositoryInterface" type="Dev\ProductComments\Model\CommentRepository" />
+        <preference for="Dev\ProductComments\Api\Data\CommentInterface" type="Dev\ProductComments\Model\Comment"/>
+        <preference for="Dev\ProductComments\Api\Data\CommentSearchResultInterface" type="Dev\ProductComments\Model\CommentSearchResult"/>
 </config>

@@ -2,13 +2,13 @@
 
 namespace Dev\ProductComments\Controller\Index;
 
+use Zend_Validate;
+use Zend_Validate_Exception;
 use Dev\ProductComments\Model\Comment;
-use Dev\ProductComments\Model\ResourceModel\Comment as ResourceComment;
 use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Action\Context;
 use Magento\Framework\Controller\ResultFactory;
-use Zend_Validate;
-use Zend_Validate_Exception;
+use Dev\ProductComments\Model\ResourceModel\Comment as ResourceComment;
 
 class SendComment extends Action
 {

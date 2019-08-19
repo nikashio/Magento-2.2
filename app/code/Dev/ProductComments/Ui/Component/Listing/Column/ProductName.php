@@ -2,10 +2,10 @@
 
 namespace Dev\ProductComments\Ui\Component\Listing\Column;
 
-use Magento\Framework\View\Element\UiComponent\ContextInterface;
-use Magento\Framework\View\Element\UiComponentFactory;
-use Magento\Ui\Component\Listing\Columns\Column;
 use Magento\Catalog\Model\Product;
+use Magento\Ui\Component\Listing\Columns\Column;
+use Magento\Framework\View\Element\UiComponentFactory;
+use Magento\Framework\View\Element\UiComponent\ContextInterface;
 
 class ProductName extends Column
 {

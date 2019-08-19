@@ -2,9 +2,9 @@
 
 namespace Dev\ProductComments\Model\ResourceModel\Comment;
 
-use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
 use Dev\ProductComments\Model\Comment;
 use Dev\ProductComments\Model\ResourceModel\Comment as ResourceComment;
+use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
 
 class Collection extends AbstractCollection
 {
