@@ -11,7 +11,9 @@ use Magento\Framework\Pricing\Helper\Data as CurrencySymbol;
 class Comments extends Template implements BlockInterface
 {
 
+
     protected $_template = 'widget/comments.phtml';
+
 
     /**
      * @var ProductRepositoryInterface
@@ -30,10 +32,12 @@ class Comments extends Template implements BlockInterface
      */
     private $imageHelper;
 
+
     /**
      * @var CurrencySymbol
      */
     private $currencySymbol;
+
 
     /**
      * Posts constructor.
@@ -50,7 +54,9 @@ class Comments extends Template implements BlockInterface
         ProductRepositoryInterface $productRepository,
         SearchCriteriaBuilder $criteriaBuilder,
         Image $imageHelper,
+
         CurrencySymbol $currencySymbol,
+
         array $data = []
     ) {
         parent::__construct($context, $data);
@@ -58,6 +64,7 @@ class Comments extends Template implements BlockInterface
         $this->criteriaBuilder = $criteriaBuilder;
         $this->imageHelper = $imageHelper;
         $this->currencySymbol = $currencySymbol;
+
     }
 
     public function getProductCollection($maxProducts)
@@ -73,12 +80,14 @@ class Comments extends Template implements BlockInterface
 
     public function getItemImage($product)
     {
+
         return $this->imageHelper->init($product, 'product_base_image')->getUrl();
     }
 
     public function getCurrencySymbol($price)
     {
         return $this->currencySymbol->currency($price);
+
     }
 
     public function getCommentCollection($productId)
