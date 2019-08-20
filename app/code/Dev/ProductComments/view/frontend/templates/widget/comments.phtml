@@ -1,9 +1,7 @@
 <?php
 /**
- * @var $block Comments
+ * @var $block Dev\ProductComments\Block\Widget\Comments
  */
-
-use Dev\ProductComments\Block\Widget\Comments;
 
 ?>
 <?php if($block->getData('comments')) ?>
@@ -43,8 +41,7 @@ use Dev\ProductComments\Block\Widget\Comments;
                                 <span class="price">
                                     <?php
                                     $price = $value->getPrice();
-                                    $priceFormat = number_format($price, 2, '.', '');
-                                    echo $block->getCurrencySymbol().$priceFormat;
+                                    echo $block->getCurrencySymbol($price)
                                     ?>
                                 </span>
                             </span>
@@ -55,7 +52,6 @@ use Dev\ProductComments\Block\Widget\Comments;
             </li>
             <?php endforeach; ?>
         </ol>
-
     </div>
 
 

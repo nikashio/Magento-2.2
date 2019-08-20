@@ -10,7 +10,7 @@ use Magento\Backend\Model\View\Result\Page;
 abstract class Comment extends Action
 {
 
-    public const ADMIN_RESOURCE = 'Dev_ProductComments::top_level';
+    const ADMIN_RESOURCE = 'Dev_ProductComments::top_level';
 
     protected $coreRegistry;
 
